@@ -1,0 +1,111 @@
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* breadcrumb transition */
+.breadcrumb-enter-active {
+  transition: all 0.4s;
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+  transition: all 0.3s;
+}
+
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+/**
+ * @description 重置el-menu的展开收起动画时长
+ */
+.outer-most .el-collapse-transition-leave-active,
+.outer-most .el-collapse-transition-enter-active {
+  transition: 0.2s all ease-in-out !important;
+}
+
+.horizontal-collapse-transition {
+  transition: var(--pure-transition-duration) all !important;
+}
+
+/* dialog-scale Animation */
+.dialog-scale-enter-active,
+.dialog-scale-leave-active,
+.dialog-scale-enter-active .el-dialog,
+.dialog-scale-leave-active .el-dialog {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.dialog-scale-enter-from,
+.dialog-scale-leave-to {
+  opacity: 0;
+}
+
+.dialog-scale-enter-from .el-dialog,
+.dialog-scale-leave-to .el-dialog {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+/* dialog-slide Animation */
+.dialog-slide-enter-active,
+.dialog-slide-leave-active,
+.dialog-slide-enter-active .el-dialog,
+.dialog-slide-leave-active .el-dialog {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dialog-slide-enter-from,
+.dialog-slide-leave-to {
+  opacity: 0;
+}
+
+.dialog-slide-enter-from .el-dialog,
+.dialog-slide-leave-to .el-dialog {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+/* dialog-bounce Animation */
+.dialog-bounce-enter-active,
+.dialog-bounce-leave-active,
+.dialog-bounce-enter-active .el-dialog,
+.dialog-bounce-leave-active .el-dialog {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialog-bounce-enter-from,
+.dialog-bounce-leave-to {
+  opacity: 0;
+}
+
+.dialog-bounce-enter-from .el-dialog,
+.dialog-bounce-leave-to .el-dialog {
+  transform: scale(0.3) translateY(-50px);
+  opacity: 0;
+}
