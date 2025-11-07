@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isAllEmpty } from "@pureadmin/utils";
+import { isAllEmpty, storageLocal } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
 import LaySearch from "../lay-search/index.vue";
 import LayNotice from "../lay-notice/index.vue";
@@ -12,15 +12,24 @@ import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vu
 
 import LogoutCircleRLine from "~icons/ri/logout-circle-r-line";
 import Setting from "~icons/ri/settings-3-line";
+import { responsiveStorageNameSpace } from "@/config";
+import { emitter } from "@/utils/mitt";
 
 const menuRef = ref();
+const showLogo = ref(
+  storageLocal().getItem<StorageConfigs>(
+    `${responsiveStorageNameSpace()}configure`
+  )?.showLogo ?? true
+);
 const defaultActive = ref(null);
 
 const {
+  title,
   route,
   device,
   logout,
   onPanel,
+  getLogo,
   resolvePath,
   username,
   userAvatar,
@@ -51,6 +60,19 @@ watch(
     getDefaultActive(route.path);
   }
 );
+
+const isWelcomePage = computed(() => route.fullPath === "/welcome");
+
+onMounted(() => {
+  emitter.on("logoChange", key => {
+    showLogo.value = key;
+  });
+});
+
+onBeforeUnmount(() => {
+  // 解绑`logoChange`公共事件，防止多次触发
+  emitter.off("logoChange");
+});
 </script>
 
 <template>
@@ -59,6 +81,11 @@ watch(
     v-loading="usePermissionStoreHook().wholeMenus.length === 0"
     class="horizontal-header"
   >
+    <div v-if="showLogo && isWelcomePage" class="horizontal-header-left">
+      <img :src="getLogo()" alt="logo" />
+      <span>{{ title }}</span>
+    </div>
+
     <el-menu
       ref="menuRef"
       router

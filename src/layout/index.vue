@@ -31,6 +31,8 @@ import NavVertical from "./components/lay-sidebar/NavVertical.vue";
 import NavHorizontal from "./components/lay-sidebar/NavHorizontal.vue";
 import BackTopIcon from "@/assets/svg/back_top.svg?component";
 
+const route = useRoute();
+
 const appWrapperRef = ref();
 const { isDark } = useDark();
 const { layout } = useLayout();
@@ -154,6 +156,8 @@ const LayHeader = defineComponent({
     );
   }
 });
+
+const isWelcomePage = computed(() => route.fullPath === "/welcome");
 </script>
 
 <template>
@@ -170,13 +174,16 @@ const LayHeader = defineComponent({
     <NavVertical
       v-show="
         !pureSetting.hiddenSideBar &&
-        (layout.includes('vertical') || layout.includes('mix'))
+        (layout.includes('vertical') ||
+          (layout.includes('mix') && !isWelcomePage))
       "
     />
     <div
       :class="[
         'main-container',
-        pureSetting.hiddenSideBar ? 'main-hidden' : ''
+        pureSetting.hiddenSideBar || (isWelcomePage && layout.includes('mix'))
+          ? 'main-hidden'
+          : ''
       ]"
     >
       <div v-if="set.fixedHeader">

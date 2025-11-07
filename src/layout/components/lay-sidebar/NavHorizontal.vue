@@ -45,6 +45,11 @@ onMounted(() => {
     showLogo.value = key;
   });
 });
+
+onBeforeUnmount(() => {
+  // 解绑`logoChange`公共事件，防止多次触发
+  emitter.off("logoChange");
+});
 </script>
 
 <template>
