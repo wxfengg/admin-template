@@ -10,11 +10,11 @@ export default {
   children: [
     {
       path: "/table/demo",
-      name: "403",
+      name: "TableDemo",
       component: () => import("@/views/table/index.vue"),
       meta: {
-        title: "403"
+        title: "表格demo"
       }
-    },
+    }
   ]
 } satisfies RouteConfigsTable;

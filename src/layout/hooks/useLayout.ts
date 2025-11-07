@@ -17,7 +17,7 @@ export function useLayout() {
     /** 导航 */
     if (!$storage.layout) {
       $storage.layout = {
-        layout: $config?.Layout ?? "vertical",
+        layout: $config?.Layout ?? "mix",
         theme: $config?.Theme ?? "light",
         darkMode: $config?.DarkMode ?? false,
         sidebarStatus: $config?.SidebarStatus ?? true,
@@ -34,7 +34,7 @@ export function useLayout() {
         hideTabs: $config?.HideTabs ?? false,
         hideFooter: $config.HideFooter ?? true,
         showLogo: $config?.ShowLogo ?? true,
-        showModel: $config?.ShowModel ?? "smart",
+        showModel: $config?.ShowModel ?? "chrome",
         multiTagsCache: $config?.MultiTagsCache ?? false,
         stretch: $config?.Stretch ?? false
       };

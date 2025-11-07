@@ -43,11 +43,11 @@ export function useTags() {
   const currentSelect = ref({});
   const isScrolling = ref(false);
 
-  /** 显示模式，默认灵动模式 */
+  /** 显示模式，默认谷歌模式 */
   const showModel = ref(
     storageLocal().getItem<StorageConfigs>(
       `${responsiveStorageNameSpace()}configure`
-    )?.showModel || "smart"
+    )?.showModel || "chrome"
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =

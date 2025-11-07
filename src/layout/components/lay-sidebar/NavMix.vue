@@ -90,6 +90,7 @@ watch(
         </template>
       </el-menu-item>
     </el-menu>
+
     <div class="horizontal-header-right">
       <!-- 菜单搜索 -->
       <LaySearch id="header-search" />
