@@ -26,25 +26,27 @@ console.log("🚀 ~ route:", route);
 </script>
 
 <template>
-  <el-row>
-    <el-col :span="4" v-if="showSide" class="mr-4">
-      <el-card shadow="never">
-        <slot name="side" />
+  <el-row class="size-full box-border overflow-hidden">
+    <el-col v-if="showSide" :xs="0" :sm="0" :md="4">
+      <el-card shadow="never" class="mr-3 h-full">
+        <slot name="side">侧边区域</slot>
       </el-card>
     </el-col>
-    <el-col :span="showSide ? 20 : 24">
-      <el-card shadow="never">
-        <div class="bg-amber-500!">
-          <slot />
-        </div>
-      </el-card>
+    <el-col :xs="24" :md="showSide ? 20 : 24">
+      <div class="size-full flex flex-col gap-3 overflow-hidden">
+        <el-card shadow="never" class="">
+          <div class="">
+            <slot name="search">搜索区域</slot>
+          </div>
+        </el-card>
+        <el-card
+          shadow="never"
+          :body-style="{ flex: 1, overflow: 'hidden' }"
+          class="flex-1"
+        >
+          <slot>内容区域</slot>
+        </el-card>
+      </div>
     </el-col>
   </el-row>
-  <!-- <div
-    class="min-h-[500px] flex flex-col items-stretch gap-16px overflow-hidden"
-  >
-    
-  </div> -->
 </template>
-
-<style lang="scss" scoped></style>

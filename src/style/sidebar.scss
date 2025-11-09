@@ -48,6 +48,7 @@
     height: 100vh;
     min-height: 100%;
     margin-left: $sideBarWidth;
+    overflow: hidden;
     background: #f0f2f5;
 
     /* main-content 属性动画 */
@@ -79,6 +80,14 @@
       + .app-main {
         padding-top: 37px !important;
       }
+    }
+  }
+
+  .main-hidden-mix {
+    margin-left: 0 !important;
+
+    .fixed-header {
+      width: 100% !important;
     }
   }
 

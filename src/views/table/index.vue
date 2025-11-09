@@ -6,11 +6,11 @@ defineOptions({
 </script>
 
 <template>
-  <div class="w-[50%] h-[1000px] bg-amber-500">
-    <!-- <ReLayout show-side>
-    <h1>这是表格页面</h1>
-  </ReLayout> -->
-  </div>
+  <ReLayout show-side>
+    <!-- <h1>这是表格页面</h1> -->
+    <div class="h-100 border">1</div>
+    <div class="h-100 mt-10 border">1</div>
+    <div class="h-100 mt-10 border">1</div>
+    <div class="h-100 mt-10 border">1</div>
+  </ReLayout>
 </template>
-
-<style lang="scss" scoped></style>

@@ -181,9 +181,8 @@ const isWelcomePage = computed(() => route.fullPath === "/welcome");
     <div
       :class="[
         'main-container',
-        pureSetting.hiddenSideBar || (isWelcomePage && layout.includes('mix'))
-          ? 'main-hidden'
-          : ''
+        pureSetting.hiddenSideBar ? 'main-hidden' : '',
+        isWelcomePage && layout.includes('mix') ? 'main-hidden-mix' : ''
       ]"
     >
       <div v-if="set.fixedHeader">

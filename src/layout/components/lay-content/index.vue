@@ -49,16 +49,22 @@ const getMainWidth = computed(() => {
 });
 
 const getSectionStyle = computed(() => {
+  console.log("🚀 ~ hideTabs:", !hideTabs.value && layout ? "yes" : "no");
+  console.log("🚀 ~ showModel.value:", showModel.value);
+  console.log(
+    `🚀 ~ showModel.value === "chrome":`,
+    showModel.value === "chrome"
+  );
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout
-      ? showModel.value == "chrome"
+      ? showModel.value === "chrome"
         ? "padding-top: 85px;"
         : "padding-top: 81px;"
       : "",
     hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
     !hideTabs.value && !layout.value
-      ? showModel.value == "chrome"
+      ? showModel.value === "chrome"
         ? "padding-top: 85px;"
         : "padding-top: 81px;"
       : "",
@@ -71,6 +77,7 @@ const getSectionStyle = computed(() => {
         }`
   ];
 });
+console.log("🚀 ~ getSectionStyle:", getSectionStyle.value);
 
 const transitionMain = defineComponent({
   props: {
@@ -133,10 +140,11 @@ const transitionMain = defineComponent({
               <el-backtop
                 title="回到顶部"
                 target=".app-main .el-scrollbar__wrap"
+                :bottom="50"
               >
                 <BackTopIcon />
               </el-backtop>
-              <div class="flex-1">
+              <div class="flex-1 p-[15px]">
                 <transitionMain :route="route">
                   <keep-alive
                     v-if="isKeepAlive"
@@ -160,7 +168,7 @@ const transitionMain = defineComponent({
               </div>
               <LayFooter v-if="!hideFooter" />
             </el-scrollbar>
-            <div v-else class="grow">
+            <div v-else class="grow p-[15px]">
               <transitionMain :route="route">
                 <keep-alive
                   v-if="isKeepAlive"
@@ -196,7 +204,7 @@ const transitionMain = defineComponent({
 .app-main {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 40px);
   overflow-x: hidden;
 }
 
@@ -208,6 +216,8 @@ const transitionMain = defineComponent({
 }
 
 .main-content {
-  margin: 15px;
+  /* margin: 15px; */
+
+  /* height: 100%; */
 }
 </style>

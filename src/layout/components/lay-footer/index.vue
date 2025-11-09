@@ -6,7 +6,7 @@ const TITLE = getConfig("Title");
 
 <template>
   <footer
-    class="layout-footer text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
+    class="layout-footer bg-white dark:bg-[#141414] text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
   >
     Copyright © 2020-present
     <a
@@ -21,12 +21,14 @@ const TITLE = getConfig("Title");
 
 <style lang="scss" scoped>
 .layout-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 40px;
   font-size: 14px;
-  height: 30px;
-  // background-color: #fff;
 }
 </style>
