@@ -17,7 +17,9 @@ const handleSubmit = () => {
     <h3>带Loading的Button</h3>
     <div class="text-gray-400 text-sm mb-5">
       tips: 一个默认带有loading的按钮，基于el-button进行二次封装，
-      兼容原本所有属性和事件。常用于表单提交等需要异步操作的场景，调用点击事件后自动进入loading状态，异步操作完成后自动关闭loading状态。
+      兼容原本所有属性和事件。
+      <span class="text-red-500"> 常用于表单提交等需要异步操作的场景 </span>
+      ，调用点击事件后自动进入loading状态，异步操作完成后自动关闭loading状态。
       值得一提的是，ReDialog组件默认自带的 确认按钮 也是使用了该按钮组件。
     </div>
     <div class="mt-5">

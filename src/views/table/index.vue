@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ReOperationColumn from "@/components/ReOperationColumn/index.vue";
 import { ElMessage } from "element-plus";
 
 defineOptions({
@@ -196,6 +197,9 @@ const defaultProps = {
 const filterText = ref("");
 const isShowSide = ref(true);
 const xl = computed(() => (isShowSide.value ? 8 : 6));
+
+const showLongButton = ref(true);
+const dialogVisible = ref(false);
 </script>
 
 <template>
@@ -356,6 +360,7 @@ const xl = computed(() => (isShowSide.value ? 8 : 6));
         </ReSearchFormItem>
       </ReSearchForm>
     </template>
+    <template #action-left> 左边区域插槽 </template>
     <template #action>
       <el-button type="primary" plain> 新增 </el-button>
       <el-button type="danger" plain> 删除 </el-button>
@@ -380,15 +385,36 @@ const xl = computed(() => (isShowSide.value ? 8 : 6));
       <el-table-column prop="address" label="Address" width="300" />
       <el-table-column prop="name" label="Name" width="100" />
       <el-table-column prop="name" label="Name" width="100" />
-      <el-table-column label="操作" width="120" fixed="right">
+      <ReOperationColumn>
         <template #default="{ row }">
-          <el-button type="primary" link>查看</el-button>
+          <el-button type="primary" link @click="showLongButton = true">
+            查看
+          </el-button>
           <el-button type="danger" link>删除</el-button>
+          <el-button type="info" link @click="dialogVisible = true"
+            >打开弹窗</el-button
+          >
+          <el-button
+            v-if="showLongButton"
+            type="warning"
+            link
+            @click="showLongButton = false"
+          >
+            无论多长的按钮都可以一行显示
+          </el-button>
         </template>
-      </el-table-column>
+      </ReOperationColumn>
     </el-table>
 
-    <div class="h-[500px] bg-amber-800"></div>
+    <ReDialog
+      v-model="dialogVisible"
+      title="随意的弹窗"
+      @confirm="dialogVisible = false"
+      @cancel="dialogVisible = false"
+    >
+      随意的内容，带有默认按钮组哦
+    </ReDialog>
+
     <template #page>
       <RePagination
         v-model:page="currentPage1"

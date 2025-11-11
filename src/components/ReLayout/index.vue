@@ -14,11 +14,6 @@ const props = defineProps({
     type: String,
     default: ""
   },
-  /** 是否显示侧边区域，默认false */
-  showSide: {
-    type: Boolean,
-    default: true
-  },
   /** 侧边区域宽度，默认208px */
   sideWidth: {
     type: Number,
