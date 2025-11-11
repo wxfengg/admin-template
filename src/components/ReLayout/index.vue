@@ -38,7 +38,7 @@ const route = useRoute();
       body-class="ht50"
     >
       <template #header>
-        <div v-if="showTitle" class="text-xl">
+        <div v-if="showTitle" class="text-[18px]">
           {{ title || route.meta.title }}
         </div>
         <div class="ml-2.5">

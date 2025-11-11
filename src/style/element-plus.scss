@@ -162,3 +162,16 @@
     background: rgb(199 201 203); /* 滑块hover颜色 */
   }
 }
+
+/* 重写el-button的plain样式 */
+.el-button {
+  &.is-plain {
+    --el-button-bg-color: transparent !important;
+  }
+}
+
+/* 重写el-table的表头样式 */
+.el-table {
+  --el-table-header-text-color: var(--el-text-color-primary) !important;
+  --el-table-header-bg-color: var(--el-fill-color-light) !important;
+}

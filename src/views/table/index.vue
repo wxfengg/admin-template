@@ -357,14 +357,14 @@ const xl = computed(() => (isShowSide.value ? 8 : 6));
       </ReSearchForm>
     </template>
     <template #action>
-      <el-button type="success" plain> 新增 </el-button>
+      <el-button type="primary" plain> 新增 </el-button>
       <el-button type="danger" plain> 删除 </el-button>
     </template>
 
     <el-table
       :data="tableData"
       cell-class-name="text-center! "
-      header-cell-class-name="text-center! bg-[var(--el-fill-color-light)]! text-[var(--el-text-color-primary)]!"
+      header-cell-class-name="text-center!"
     >
       <el-table-column prop="address" label="Address" width="200" />
       <el-table-column prop="date" label="Date" width="100" />
@@ -380,16 +380,19 @@ const xl = computed(() => (isShowSide.value ? 8 : 6));
       <el-table-column prop="address" label="Address" width="300" />
       <el-table-column prop="name" label="Name" width="100" />
       <el-table-column prop="name" label="Name" width="100" />
+      <el-table-column label="操作" width="120" fixed="right">
+        <template #default="{ row }">
+          <el-button type="primary" link>查看</el-button>
+          <el-button type="danger" link>删除</el-button>
+        </template>
+      </el-table-column>
     </el-table>
 
     <div class="h-[500px] bg-amber-800"></div>
     <template #page>
-      <el-pagination
-        v-model:current-page="currentPage1"
-        :page-size="100"
-        :size="size"
-        background
-        layout="total, prev, pager, next"
+      <RePagination
+        v-model:page="currentPage1"
+        v-model:size="size"
         :total="1000"
       />
     </template>

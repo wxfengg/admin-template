@@ -8,10 +8,11 @@ declare module "vue" {
     FontIcon: (typeof import("../src/components/ReIcon"))["FontIcon"];
     Auth: (typeof import("../src/components/ReAuth"))["Auth"];
     Perms: (typeof import("../src/components/RePerms"))["Perms"];
-    ReDialog: (typeof import("../src/components/ReDialog"))["ReDialog"];
-    ReLayout: (typeof import("../src/components/ReLayout"))["ReLayout"];
-    ReSearchForm: (typeof import("../src/components/ReSearchForm"))["ReSearchForm"];
-    ReSearchFormItem: (typeof import("../src/components/ReSearchFormItem"))["ReSearchFormItem"];
+    ReDialog: (typeof import("../src/components/ReDialog/index.vue"))["default"];
+    ReLayout: (typeof import("../src/components/ReLayout/index.vue"))["default"];
+    ReSearchForm: (typeof import("../src/components/ReSearchForm/index.vue"))["default"];
+    ReSearchFormItem: (typeof import("../src/components/ReSearchFormItem/index.vue"))["default"];
+    RePagination: (typeof import("../src/components/RePagination/index.vue"))["default"];
   }
 }
 

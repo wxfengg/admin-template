@@ -45,13 +45,15 @@ import { Perms } from "@/components/RePerms";
 import ReDialog from "@/components/ReDialog/index.vue";
 import ReLayout from "@/components/ReLayout/index.vue";
 import ReSearchForm from "@/components/ReSearchForm/index.vue";
-import ReSearchFormItem from "@/components/ReSearchFromItem/index.vue";
+import ReSearchFormItem from "@/components/ReSearchFormItem/index.vue";
+import RePagination from "@/components/RePagination/index.vue";
 app.component("Auth", Auth);
 app.component("Perms", Perms);
 app.component("ReDialog", ReDialog);
 app.component("ReLayout", ReLayout);
 app.component("ReSearchForm", ReSearchForm);
 app.component("ReSearchFormItem", ReSearchFormItem);
+app.component("RePagination", RePagination);
 
 // 全局注册vue-tippy
 import "tippy.js/dist/tippy.css";
