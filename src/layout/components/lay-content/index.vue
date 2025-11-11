@@ -49,12 +49,6 @@ const getMainWidth = computed(() => {
 });
 
 const getSectionStyle = computed(() => {
-  console.log("🚀 ~ hideTabs:", !hideTabs.value && layout ? "yes" : "no");
-  console.log("🚀 ~ showModel.value:", showModel.value);
-  console.log(
-    `🚀 ~ showModel.value === "chrome":`,
-    showModel.value === "chrome"
-  );
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout
@@ -74,10 +68,10 @@ const getSectionStyle = computed(() => {
           hideTabs.value
             ? "min-height: calc(100vh - 48px);"
             : "min-height: calc(100vh - 86px);"
-        }`
+        }`,
+    hideFooter.value ? "height: 100vh;" : "height: calc(100vh - 40px);"
   ];
 });
-console.log("🚀 ~ getSectionStyle:", getSectionStyle.value);
 
 const transitionMain = defineComponent({
   props: {
@@ -121,7 +115,7 @@ const transitionMain = defineComponent({
       <template #default="{ Component, route }">
         <LayFrame :currComp="Component" :currRoute="route">
           <template #default="{ Comp, fullPath, frameInfo }">
-            <el-scrollbar
+            <!-- <el-scrollbar
               v-if="fixedHeader"
               :wrap-style="{
                 display: 'flex',
@@ -167,7 +161,32 @@ const transitionMain = defineComponent({
                 </transitionMain>
               </div>
               <LayFooter v-if="!hideFooter" />
-            </el-scrollbar>
+            </el-scrollbar> -->
+            <div v-if="fixedHeader" class="size-full">
+              <div class="flex-1 p-[15px] size-full overflow-y-auto">
+                <transitionMain :route="route">
+                  <keep-alive
+                    v-if="isKeepAlive"
+                    :include="usePermissionStoreHook().cachePageList"
+                  >
+                    <component
+                      :is="Comp"
+                      :key="fullPath"
+                      :frameInfo="frameInfo"
+                      class="main-content"
+                    />
+                  </keep-alive>
+                  <component
+                    :is="Comp"
+                    v-else
+                    :key="fullPath"
+                    :frameInfo="frameInfo"
+                    class="main-content"
+                  />
+                </transitionMain>
+              </div>
+              <LayFooter v-if="!hideFooter" />
+            </div>
             <div v-else class="grow p-[15px]">
               <transitionMain :route="route">
                 <keep-alive
@@ -204,7 +223,6 @@ const transitionMain = defineComponent({
 .app-main {
   position: relative;
   width: 100%;
-  height: calc(100vh - 40px);
   overflow-x: hidden;
 }
 

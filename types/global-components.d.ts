@@ -9,6 +9,9 @@ declare module "vue" {
     Auth: (typeof import("../src/components/ReAuth"))["Auth"];
     Perms: (typeof import("../src/components/RePerms"))["Perms"];
     ReDialog: (typeof import("../src/components/ReDialog"))["ReDialog"];
+    ReLayout: (typeof import("../src/components/ReLayout"))["ReLayout"];
+    ReSearchForm: (typeof import("../src/components/ReSearchForm"))["ReSearchForm"];
+    ReSearchFormItem: (typeof import("../src/components/ReSearchFormItem"))["ReSearchFormItem"];
   }
 }
 

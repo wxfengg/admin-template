@@ -39,13 +39,19 @@ app.component("IconifyIconOffline", IconifyIconOffline);
 app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
 
-// 全局注册按钮级别权限组件
+// 全局注册组件
 import { Auth } from "@/components/ReAuth";
 import { Perms } from "@/components/RePerms";
 import ReDialog from "@/components/ReDialog/index.vue";
+import ReLayout from "@/components/ReLayout/index.vue";
+import ReSearchForm from "@/components/ReSearchForm/index.vue";
+import ReSearchFormItem from "@/components/ReSearchFromItem/index.vue";
 app.component("Auth", Auth);
 app.component("Perms", Perms);
 app.component("ReDialog", ReDialog);
+app.component("ReLayout", ReLayout);
+app.component("ReSearchForm", ReSearchForm);
+app.component("ReSearchFormItem", ReSearchFormItem);
 
 // 全局注册vue-tippy
 import "tippy.js/dist/tippy.css";
